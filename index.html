@@ -318,7 +318,7 @@
                     <option value="">All Priorities</option>
                 </select>
                 <select id="sortBy" class="filter-select">
-                    <option value="time">Sort by Time</option>
+                    <option value="time">Sort by Time (Latest First)</option>
                     <option value="category">Sort by Category</option>
                     <option value="priority">Sort by Priority</option>
                 </select>
@@ -585,7 +585,8 @@
                         return (priorityOrder[b.priority] || 0) - (priorityOrder[a.priority] || 0);
                     case 'time':
                     default:
-                        return new Date(a.time) - new Date(b.time);
+                        // Changed: Reverse the sorting to show latest entries first
+                        return new Date(b.time) - new Date(a.time);
                 }
             });
         }
